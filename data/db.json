@@ -1,0 +1,158 @@
+{
+  "users": [
+    {
+      "id": "d6602240-e85a-4082-b1e9-92d7e412faf4",
+      "account": "ben",
+      "password": "a12345",
+      "name": "Ben Chen 2",
+      "mail": "ben@gmail.com",
+      "head": "https://randomuser.me/api/portraits/men/58.jpg"
+    },
+    {
+      "id": "06f15555-5710-41f1-8a50-bf5622cf377d",
+      "account": "benny",
+      "password": "a12345",
+      "name": "Benny Lin",
+      "mail": "benny@gmail.com",
+      "head": "https://randomuser.me/api/portraits/men/14.jpg"
+    },
+    {
+      "id": "73d9f626-e597-43db-b0ac-32dad6f03a72",
+      "account": "tony",
+      "password": "a12345",
+      "name": "Tony Gray",
+      "mail": "tony@gmail.com",
+      "head": "https://randomuser.me/api/portraits/men/31.jpg"
+    },
+    {
+      "id": "ef224130-a42d-48a9-ba16-77ef6c7db77b",
+      "account": "alexa",
+      "password": "a12345",
+      "name": "Alexa Rivera",
+      "mail": "alexa.rivera@example.com",
+      "head": "https://randomuser.me/api/portraits/women/23.jpg"
+    },
+    {
+      "id": "617cb94d-b1da-4f81-a60b-15bb1c4b309d",
+      "account": "meimei",
+      "password": "a12345",
+      "name": "Mei Lin",
+      "mail": "mei.lin@gmail.com",
+      "head": "https://randomuser.me/api/portraits/women/53.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "06f15555-5710-41f1-8a50-bf5622cf377d",
+      "title": "櫛瓜",
+      "price": 45,
+      "stock": 100,
+      "createTime": 1694408281651
+    },
+    {
+      "id": "f3e3b921-3b56-4894-8602-aa323c26697a",
+      "title": "冬瓜",
+      "price": 300,
+      "stock": 30,
+      "createTime": 1694411413726
+    },
+    {
+      "id": "cfcf5a9b-b100-4d81-9502-d361c667c579",
+      "title": "南瓜",
+      "price": 120,
+      "stock": 90,
+      "createTime": 1694411452877
+    },
+    {
+      "id": "1a6907b6-03e3-483d-9107-44e13beecce0",
+      "title": "鳳梨",
+      "price": 90,
+      "stock": 125,
+      "createTime": 1694411472279
+    },
+    {
+      "id": "d826a0bc-7c52-44ed-a036-111df35d6b83",
+      "title": "高麗菜",
+      "price": 120,
+      "stock": 42,
+      "createTime": 1694411493020
+    },
+    {
+      "id": "c9c4bfae-a9b3-414a-a4f1-ce4977c8d2c3",
+      "title": "小白菜",
+      "price": 39,
+      "stock": 76,
+      "createTime": 1694411508463
+    },
+    {
+      "id": "c4cccfd1-ab3a-465b-88c7-1b15824059c2",
+      "title": "莧菜",
+      "price": 39,
+      "stock": 122,
+      "createTime": 1694411521383
+    },
+    {
+      "id": "bf820195-e2b6-475e-abd1-027929bd30ed",
+      "title": "地瓜葉",
+      "price": 39,
+      "stock": 33,
+      "createTime": 1694411541503
+    },
+    {
+      "id": "1da1199f-6882-491a-9070-605eee50d34a",
+      "title": "青江菜",
+      "price": 31,
+      "stock": 50,
+      "createTime": 1694411594099
+    },
+    {
+      "id": "92f2e384-c3f7-49ec-bec1-dac343a277ff",
+      "title": "油菜",
+      "price": 39,
+      "stock": 50,
+      "createTime": 1694411602792
+    },
+    {
+      "id": "dbb34a34-a9a0-4b45-83d8-0e36b5475073",
+      "title": "龍鬚菜",
+      "price": 65,
+      "stock": 32,
+      "createTime": 1694411623352
+    },
+    {
+      "id": "6e929e42-fcc4-4dc0-b7d7-6b8f7b0d9d9c",
+      "title": "芥藍",
+      "price": 86,
+      "stock": 87,
+      "createTime": 1694411654312
+    },
+    {
+      "id": "926c537c-ca57-4c6e-8672-2b41af4710ac",
+      "title": "萵苣",
+      "price": 58,
+      "stock": 213,
+      "createTime": 1694411675170
+    },
+    {
+      "id": "0cd67baf-d3de-469c-8657-eec07962fd84",
+      "title": "菱角",
+      "price": 140,
+      "stock": 21,
+      "createTime": 1694411694220
+    },
+    {
+      "id": "0be68f24-0067-42de-ae2d-d29c70e50c02",
+      "title": "洋蔥",
+      "price": 33,
+      "stock": 223,
+      "createTime": 1694411710523
+    },
+    {
+      "id": "3c5a9e64-8f3a-4d76-aa66-26990d5e3db7",
+      "title": "胡蘿蔔",
+      "price": 45,
+      "stock": 50,
+      "createTime": 1694411724230
+    }
+  ]
+}
