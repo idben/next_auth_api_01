@@ -19,10 +19,10 @@ router.delete((req, res) => {
 
 export default router.handler({
   onError: (err, req, res) => {
-    console.error(err.stack);
-    res.status(err.statusCode || 500).end(err.message);
+    console.log(err);
+    res.status(err.statusCode || 500).json({message: err.message});
   },
   onNoMatch: (req, res) => {
-    res.status(404).end("Page is not found");
-  }
+    res.status(404).json({ message: `路由 ${req.method} ${req.url} 找不到` });
+  },
 });

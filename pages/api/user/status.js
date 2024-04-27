@@ -1,9 +1,9 @@
 import { createRouter } from "next-connect";
 
 const router = createRouter();
-
+  
 router.get((req, res) => {
-  res.status(200).json({message: "使用者登出"});
+  res.status(200).json({message: "檢查使用者登入狀態"});
 });
 
 export default router.handler({
