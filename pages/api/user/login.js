@@ -38,7 +38,7 @@ router
         }, secretKey, { expiresIn: "30m" });
         res.status(200).json({message: "登入成功", token});
       }else{
-        res.status(401).json({ message: "帳號或密碼錯誤" });
+        res.status(401).json({ error: "帳號或密碼錯誤" });
       }
     } catch (error) {
       console.error("登入過程中發生錯誤:", error);
