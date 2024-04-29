@@ -24,10 +24,14 @@ router.get((req, res) => {
       const {password, ...others} = u;
       return others;
     });
-    res.status(200).json(users);
+    res.status(200).json({status: "success", users});
   } catch (error) {
     console.error("處理過程中發生錯誤:", error);
-    res.status(500).json({ message: "註冊過程中發生錯誤", error: error.message });
+    res.status(500).json({
+      status: "error", 
+      message: "註冊過程中發生錯誤", 
+      error: error.message 
+    });
   }
 });
 
@@ -38,7 +42,8 @@ router
     const check1 = db.data.users.find(u => u.account === account);
     const check2 = db.data.users.find(u => u.mail === mail);
     if(check1 || check2){
-      return res.status(500).json({ 
+      return res.status(500).json({
+        status: "error",
         message: "註冊過程中發生錯誤", 
         error: "信箱或帳號已經被使用過"
       });
@@ -47,10 +52,17 @@ router
     try {
       const user = {id, account, password, name, mail, head}
       await db.update(({ users }) => users.push(user))
-      res.status(200).json({message: "註冊成功", id});
+      res.status(200).json({
+        status: "success",
+        message: "註冊成功", 
+        id
+      });
     } catch (error) {
       console.error("註冊過程中發生錯誤:", error);
-      res.status(500).json({ message: "註冊過程中發生錯誤", error: error.message });
+      res.status(500).json({
+        status: "error", 
+        message: "註冊過程中發生錯誤", 
+        error: error.message });
     }
   });
 
@@ -69,9 +81,12 @@ router
 export default router.handler({
   onError: (err, req, res) => {
     console.log(err);
-    res.status(err.statusCode || 500).json({error: err.message});
+    res.status(err.statusCode || 500).json({status: "error", error: err.message});
   },
   onNoMatch: (req, res) => {
-    res.status(404).json({ error: `路由 ${req.method} ${req.url} 找不到` });
+    res.status(404).json({
+      status: "error", 
+      error: `路由 ${req.method} ${req.url} 找不到`
+    });
   },
 });

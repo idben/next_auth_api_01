@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 import checkToken from "@/middleware/checkToken";
 
 dotenv.config();
-const secretKey = process.env.SECRET_KEY;
+const secretKey = process.env.NEXT_PUBLIC_TOKEN_SECRET_KEY;
 
 const upload = multer();
 
@@ -32,15 +32,18 @@ router.get(checkToken, (req, res) => {
     mail: user.mail,
     head: user.head 
   }, secretKey, { expiresIn: "30m" });
-  res.status(200).json({message: "登入狀態", token});
+  res.status(200).json({status: "success", message: "登入狀態", token});
 });
 
 export default router.handler({
   onError: (err, req, res) => {
     console.log(err);
-    res.status(err.statusCode || 500).json({message: err.message});
+    res.status(err.statusCode || 500).json({status: "error", error: err.message});
   },
   onNoMatch: (req, res) => {
-    res.status(404).json({ message: `路由 ${req.method} ${req.url} 找不到` });
+    res.status(404).json({
+      status: "error", 
+      error: `路由 ${req.method} ${req.url} 找不到`
+    });
   },
 });

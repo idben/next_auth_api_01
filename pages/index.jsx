@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
-
-const inter = Inter({ subsets: ["latin"] });
+import { AuthContext } from '@/context/AuthContext';
+import { useContext } from "react";
 
 export default function Home() {
+  const {user} = useContext(AuthContext);
+
   return (
     <>
       <Head>
@@ -14,7 +15,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="container"></main>
+      <main className="container">
+        <h1>主要頁面</h1>
+        <div className="d-flex align-items-end">
+          {user && user.head && (
+            <Image src={user.head} alt="User Profile" width={100} height={100} />
+          )}
+          <div className="btn btn-primary">登出</div>
+        </div>
+      </main>
     </>
   );
 }
