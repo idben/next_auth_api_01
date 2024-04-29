@@ -25,6 +25,17 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## 簡介
+1. 使用 next page router 撰寫使用者相關的 API，並使用
+2. 使用 next-connect 來處理 router 的寫法
+3. 使用 multer 處理表單整理
+4. 使用 jsonwebtoken 來核發與解析 token
+  因為 9.0.1 在 server 端解析時會有錯誤，所以退回 8.5.1
+5. 使用環境變數檔案記錄 jsonwebtoken 密鑰
+  要使用 NEXT_PUBLIC_ 開頭的變數才能 client server 都讀得到
+6. 在 next config 要把要使用的外部圖片 domain 記錄進來
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
