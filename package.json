@@ -1,6 +1,7 @@
 {
-  "name": "test_01",
+  "name": "next_auth_api_01",
   "version": "0.1.0",
+  "author": "idben",
   "private": true,
   "scripts": {
     "dev": "next dev",
