@@ -45,7 +45,8 @@ router.get((req, res) => {
 router
   .use(upload.none())
   .put(checkToken, async (req, res) => {
-    const { id, password, name, mail, head } = req.query;
+    const { password, name, mail, head } = req.body;
+    const { id } = req.query;
     const { id: tokenID } = req.decoded;
     if(id !== tokenID){
       res.status(403).json({status: "error", error: "修改禁止，沒有權限"});
