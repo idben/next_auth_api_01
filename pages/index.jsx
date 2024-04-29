@@ -1,11 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "@/styles/Home.module.css";
 import { AuthContext } from '@/context/AuthContext';
 import { useContext } from "react";
+import useAuth from "@/hook/useAuth";
 
 export default function Home() {
   const {user} = useContext(AuthContext);
+  const { logout } = useAuth();
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function Home() {
           {user && user.head && (
             <Image src={user.head} alt="User Profile" width={100} height={100} />
           )}
-          <div className="btn btn-primary">登出</div>
+          <div className="btn btn-primary" onClick={logout}>登出</div>
         </div>
       </main>
     </>
