@@ -25,6 +25,11 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## 用途
+1. 上課中的操作範例
+2. 主要是在 next 中開 API
+3. 整個站只有發出使用者相關 API 與 去使用 API 的功能
+
 ## 簡介
 1. 使用 next page router 撰寫使用者相關的 API，並使用
 2. 使用 next-connect 來處理 router 的寫法
