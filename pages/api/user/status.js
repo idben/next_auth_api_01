@@ -23,22 +23,33 @@ await db.read();
 
 const router = createRouter();
   
-router.get(checkToken, (req, res) => {
-  const user = req.decoded;
-  const token = jwt.sign({
-    id: user.id,
-    account: user.account,
-    name: user.name,
-    mail: user.mail,
-    head: user.head 
-  }, secretKey, { expiresIn: "30m" });
-  res.status(200).json({status: "success", message: "登入狀態", token});
+router.get(checkToken, async (req, res) => {
+  try {
+    const user = req.decoded;
+    const token = jwt.sign({
+      id: user.id,
+      account: user.account,
+      name: user.name,
+      mail: user.mail,
+      head: user.head 
+    }, secretKey, { expiresIn: "30m" });
+    res.status(200).json({status: "success", message: "登入狀態", token});
+  } catch (error) {
+    console.error("登入過程中發生錯誤:", error);
+    res.status(error.statusCode || 500).json({
+      status: "error", 
+      error: error.message? error.message: "登入過程中發生錯誤"
+    });
+  }
 });
 
 export default router.handler({
   onError: (err, req, res) => {
     console.log(err);
-    res.status(err.statusCode || 500).json({status: "error", error: err.message});
+    res.status(err.statusCode || 500).json({
+      status: "error", 
+      error: err.message?err.message:"錯誤發生"
+    });
   },
   onNoMatch: (req, res) => {
     res.status(404).json({

@@ -18,19 +18,23 @@ await db.read();
 
 const router = createRouter();
 
-router.get((req, res) => {
+router.get(async (req, res) => {
   try {
-    const users = db.data.users.map(u => {
+    const users = await db.data.users.map(u => {
       const {password, ...others} = u;
       return others;
     });
+    if(!users){
+      let err = new Error("找不到使用者");
+      err.statusCode = 404;
+      throw err;
+    }
     res.status(200).json({status: "success", users});
   } catch (error) {
     console.error("處理過程中發生錯誤:", error);
-    res.status(500).json({
+    res.status(error.statusCode || 500).json({
       status: "error", 
-      message: "註冊過程中發生錯誤", 
-      error: error.message 
+      error: error.message?error.message:"註冊過程中發生錯誤"
     });
   }
 });
@@ -39,14 +43,12 @@ router
   .use(upload.none())
   .post(async (req, res) => {
     const { account, password, name, mail, head } = req.body;
-    const check1 = db.data.users.find(u => u.account === account);
-    const check2 = db.data.users.find(u => u.mail === mail);
+    const check1 = await db.data.users.find(u => u.account === account);
+    const check2 = await db.data.users.find(u => u.mail === mail);
     if(check1 || check2){
-      return res.status(500).json({
-        status: "error",
-        message: "註冊過程中發生錯誤", 
-        error: "信箱或帳號已經被使用過"
-      });
+      let err = new Error("信箱或帳號已經被使用過");
+      err.statusCode = 500;
+      throw err;
     }
     const id = uuidv4();
     try {
@@ -54,15 +56,15 @@ router
       await db.update(({ users }) => users.push(user))
       res.status(200).json({
         status: "success",
-        message: "註冊成功", 
+        message: "註冊成功",
         id
       });
     } catch (error) {
       console.error("註冊過程中發生錯誤:", error);
-      res.status(500).json({
+      res.status(error.statusCode || 500).json({
         status: "error", 
-        message: "註冊過程中發生錯誤", 
-        error: error.message });
+        error: error.message? error.message: "註冊過程中發生錯誤"
+      });
     }
   });
 
@@ -81,7 +83,10 @@ router
 export default router.handler({
   onError: (err, req, res) => {
     console.log(err);
-    res.status(err.statusCode || 500).json({status: "error", error: err.message});
+    res.status(err.statusCode || 500).json({
+      status: "error", 
+      error: err.message?err.message:"錯誤發生"
+    });
   },
   onNoMatch: (req, res) => {
     res.status(404).json({
